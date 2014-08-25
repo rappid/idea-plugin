@@ -1,6 +1,5 @@
 package com.rappidjs.ide.idea.xaml;
 
-import com.intellij.idea.IdeaLogger;
 import com.intellij.openapi.module.Module;
 import com.intellij.openapi.module.ModuleManager;
 import com.intellij.openapi.module.ModuleUtil;
@@ -78,8 +77,6 @@ public class ComponentXmlElementDescriptorProvider implements XmlElementDescript
             this.xmlElementDescriptor = xmlElementDescriptor;
             this.xmlTag = xmlTag;
             this.rappidProject = rappidProject;
-
-            logger().debug(String.format("Create Descriptor for %s", xmlTag.getName()));
         }
 
         private static VirtualFile findFileForClass(Project project, String fqClassName) {
@@ -169,13 +166,7 @@ public class ComponentXmlElementDescriptorProvider implements XmlElementDescript
             return null;
         }
 
-        protected com.intellij.openapi.diagnostic.Logger logger() {
-            return IdeaLogger.getInstance(this.getClass());
-        }
-
         public PsiElement getDeclaration() {
-
-            logger().debug(String.format("Get declaration for %s", xmlTag.getName()));
 
             String fqClassName = xmlTag.getNamespace() + "." + xmlTag.getLocalName();
             VirtualFile file = findFileForClass(xmlTag.getProject(), fqClassName);
