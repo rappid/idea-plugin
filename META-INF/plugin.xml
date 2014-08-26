@@ -4,6 +4,8 @@
     <version>0.1</version>
     <vendor email="support@rappidjs.com" url="http://www.rappidjs.com">rAppid.js</vendor>
 
+    <depends>JavaScript</depends>
+
     <description><![CDATA[
       Support for rAppid.js language<br>
       <em>most HTML tags may be used</em>
@@ -27,7 +29,8 @@
     <extensions defaultExtensionNs="com.intellij">
         <!-- Add your extensions here -->
         <xml.elementDescriptorProvider implementation="com.rappidjs.ide.idea.xaml.ComponentXmlElementDescriptorProvider"/>
-
+        <!--<xml.attributeDescriptorsProvider implementation="com.rappidjs.ide.idea.xaml.ComponentXmlAttributeDescriptorsProvider" />-->
+        <psi.referenceContributor implementation="com.rappidjs.ide.idea.js.requirejs.RequirejsPsiReferenceContributor"/>
     </extensions>
 
     <application-components>
